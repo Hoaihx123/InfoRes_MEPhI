@@ -11,7 +11,6 @@ def index():
 @app.route('/show', methods=['GET'])
 def rows_show():
     conn = sqlite3.connect("../lab2/911.db")
-    cursor = conn.cursor()
     df = pd.read_sql_query("SELECT * FROM Calls911", conn)
     conn.close()
     return jsonify(df.to_dict(orient='records'))
